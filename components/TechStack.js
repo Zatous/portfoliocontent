@@ -1,5 +1,5 @@
 export const techGroups = [
-  { name: "Frontend", tools: ["React", "Next.js", "React Native", "Expo", "JavaScript", "HTML", "CSS"] },
+  { name: "Frontend", tools: ["HTML", "CSS", "JavaScript", "React", "Next.js", "React Native", "Expo"] },
   { name: "Backend", tools: ["Python", "FastAPI", "Java", "C#"] },
   { name: "Database / Services", tools: ["Supabase", "Firebase"] },
   { name: "Tools", tools: ["Git", "GitHub", "VS Code", "Visual Studio", "Figma"] },
@@ -15,7 +15,7 @@ export default function TechStack() {
           <ul>{group.tools.map(tool => <li key={tool}>{tool}</li>)}</ul>
         </div>
       ))}</div>
-      <p className="stack-note metadata">VISIBLE SKILLS / OPEN ACCESS</p>
+      <div className="contact-placeholders"><h3 className="section-title">CONTACT ME</h3><p>your@email.com</p><p>GitHub / @username</p><p>LinkedIn / @username</p></div>
     </section>
   );
 }

@@ -8,9 +8,8 @@ export function ProjectRows({ numbers }) {
             <h3>PROJECT {String(number).padStart(2, "0")}</h3>
             <p>Placeholder project description.</p>
             <p className="project-technologies">Technology / Framework / Tools</p>
-            <span className="project-demo">Demo soon</span>
+            <span className="project-status metadata">DEMO STATUS</span>
           </div>
-          <span className="project-status metadata"><span aria-hidden="true">●</span> DEMO</span>
           <div className="project-preview" aria-hidden="true"><span>PROJECT<br />PREVIEW</span></div>
         </li>
       ))}
@@ -21,8 +20,9 @@ export function ProjectRows({ numbers }) {
 export default function Projects() {
   return (
     <section aria-labelledby="projects-title">
-      <div className="section-heading"><h2 id="projects-title" className="section-title">PROJECTS</h2><span className="metadata">7 DEMO PROJECTS</span></div>
+      <div className="section-heading"><h2 id="projects-title" className="section-title">SELECTED PROJECTS</h2><span className="metadata">03 / DEMO</span></div>
       <ProjectRows numbers={[1, 2, 3]} />
+      <p className="project-notes">Placeholder project notes, process, and supporting details.</p>
     </section>
   );
 }

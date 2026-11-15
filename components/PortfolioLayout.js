@@ -1,10 +1,11 @@
-export default function PortfolioLayout({ about, projects, stack, children }) {
+export default function PortfolioLayout({ about, projects, stack, experience, children }) {
   return (
     <main id="portfolio" className="page-width portfolio" tabIndex={-1}>
-      <div className="portfolio-overview">
-        <div className="overview-panel profile-column">{about}</div>
-        <div className="overview-panel stack-column">{stack}</div>
-        <div className="overview-panel projects-column">{projects}</div>
+      <div className="resume-document">
+        <div className="profile-column">{about}</div>
+        <div className="stack-column">{stack}</div>
+        <div className="projects-column">{projects}</div>
+        <div className="experience-column">{experience}</div>
       </div>
       {children}
     </main>
