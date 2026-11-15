@@ -50,6 +50,28 @@ svg { display: block; width: 1.25em; height: 1.25em; flex-shrink: 0; }
 .tech-group li { display: inline; }
 .tech-group li:not(:last-child)::after { content: " / "; color: #777; white-space: pre; }
 .stack-note { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 8px; color: var(--muted); }
+.locked-region { position: relative; isolation: isolate; }
+.portfolio-details { min-height: 710px; user-select: none; }
+.portfolio-details .overview-panel { padding-top: 22px; }
+.portfolio-details .projects-column { padding-top: 0; }
+.detail-section { margin-bottom: 36px; }
+.detail-section h3 { font-size: 14px; margin-bottom: 4px; }
+.detail-section p { font-size: 12px; line-height: 1.6; margin-bottom: 8px; }
+.detail-section .metadata { color: var(--muted); font-size: 10px; }
+.detail-entry { padding-block: 14px; border-top: 1px solid var(--line); }
+.detail-entry p:last-child { margin-bottom: 0; }
+.portfolio-obstruction { position: absolute; z-index: 2; inset: 58px 12px 28px; display: flex; flex-direction: column; justify-content: space-between; padding: 28px 32px; background: #191919; color: #fafaf9; box-shadow: 0 5px 16px #00000014; }
+.portfolio-obstruction::before, .portfolio-obstruction::after { content: ""; position: absolute; z-index: -1; background: #191919; pointer-events: none; }
+.portfolio-obstruction::before { height: 14px; top: -8px; left: -8px; right: 12%; }
+.portfolio-obstruction::after { height: 12px; bottom: -6px; right: -8px; left: 18%; }
+.obstruction-top, .obstruction-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 9px; color: #b8b8b4; }
+.restriction-label { display: inline-flex; align-items: center; gap: 8px; }
+.restriction-label svg { width: 15px; height: 15px; }
+.obstruction-message { text-align: center; padding-block: 40px; }
+.obstruction-message h2 { font-size: clamp(40px, 6.4vw, 88px); font-weight: 700; letter-spacing: -.045em; line-height: 1.02; }
+.obstruction-message h2 span { display: block; }
+.obstruction-message > p { font-size: 13px; color: #b8b8b4; margin-top: 28px; }
+.obstruction-bottom { border-top: 1px solid #454545; padding-top: 18px; font-size: 8px; }
 @media (min-width: 701px) and (max-width: 1100px) { .project-row { grid-template-columns: 18px minmax(0, 1fr) 76px; gap: 8px; } .project-status { display: none; } .project-preview { min-height: 64px; } .project-copy p, .project-demo { font-size: 11px; } }
 .site-footer { display: flex; justify-content: space-between; gap: 20px; padding-block: 20px; margin-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
 .skip-link { position: fixed; top: 12px; left: 20px; z-index: 30; padding: 12px 16px; transform: translateY(-200%); background: var(--ink); color: var(--paper); }

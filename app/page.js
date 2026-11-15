@@ -4,6 +4,7 @@ import PortfolioLayout from "../components/PortfolioLayout";
 import About from "../components/About";
 import Projects from "../components/Projects";
 import TechStack from "../components/TechStack";
+import LockedPortfolio from "../components/LockedPortfolio";
 
 export default function Home() {
   return (
@@ -14,7 +15,9 @@ export default function Home() {
         about={<About />}
         projects={<Projects />}
         stack={<TechStack />}
-      />
+      >
+        <LockedPortfolio />
+      </PortfolioLayout>
       <Footer />
     </>
   );
