@@ -32,3 +32,10 @@ test("personal content stays placeholder and navigation stays local", () => {
   assert.ok(html.indexOf('id="stack-title"') < html.indexOf('id="projects-title"'));
   assert.ok(html.indexOf('id="projects-title"') < html.indexOf('id="experience-title"'));
 });
+
+test("the locked portfolio exposes a real hiring button without exposing hidden details", () => {
+  assert.match(html, /class="resume-document" aria-hidden="true" inert=""/);
+  assert.match(html, /<button id="hire-trigger"[^>]*type="button"/);
+  assert.ok(html.includes("Hire me to unlock my full potential"));
+  assert.ok(html.includes('class="lock-badge" aria-hidden="true"'));
+});
