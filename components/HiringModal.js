@@ -20,6 +20,7 @@ export default function HiringModal() {
     formRef.current?.reset();
     previousOverflow.current = document.body.style.overflow;
     dialogRef.current.showModal();
+    dialogRef.current.scrollTop = 0;
     document.body.style.overflow = "hidden";
     nameRef.current?.focus({ preventScroll: true });
   }

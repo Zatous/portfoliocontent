@@ -1,15 +1,17 @@
-# Personal portfolio
+# Locked developer portfolio
 
-A compact developer portfolio with placeholder personal content and an intentionally covered lower profile. Built with Next.js App Router, React, JavaScript, and plain CSS. Frontend only.
+A compact résumé presented as a locked screen. The red **Hire me to unlock my full potential →** button opens a playful hiring form. A successful demo submission never unlocks the portfolio.
 
-## Local development
+Next.js App Router, React, JavaScript, and plain CSS. No database, application API, authentication, email service, or animation dependency.
+
+## Run locally
 
 ```sh
 npm ci
 npm run dev
 ```
 
-## Validation and static preview
+For a production export and local static preview:
 
 ```sh
 npm run lint
@@ -18,23 +20,22 @@ npm run check:content
 npm run preview
 ```
 
-The build exports static files to `out/`. The preview serves those files at `http://127.0.0.1:3107`. It has no application API or database. Set `PORT` to use a different local preview port.
+`out/` contains the exported site. The preview defaults to `http://127.0.0.1:3107`; set the `PORT` environment variable to choose another port. No deployment is performed by these commands.
 
-No site has been deployed.
+## Layout and content
 
-## Design and content
+- Desktop: one viewport with an approximately 20 / 55 / 25 three-column document. A 640px minimum height permits a little scrolling on unusually short windows.
+- Phone: compact About → Tech Stack → three Projects → Experience, with the lock control fixed prominently over the document.
+- The 18 technologies in `components/TechStack.js` are the only real profile information. Names, titles, project details, status, experience, and contacts are placeholders.
+- Exactly three project entries exist. There is no services section or separate portfolio continuation.
+- Details stay blurred on hover and after submission. The decorative locked document is inert and hidden from assistive technology.
 
-- The desktop overview uses a narrow About column, a wider numbered Projects list, and a plain-text Tech Stack column. Tablet rearranges the stack below the other columns; phone reading order is About, Tech Stack, Projects.
-- `components/TechStack.js` holds the only real profile information: the 18 supplied technologies. Every identity, project, status, education, service, and contact field is a demo placeholder.
-- `components/PortfolioDetails.js` contains the lower portfolio. The opaque layer in `components/LockedPortfolio.js` sits over that content. The underlying region is inert and hidden from assistive technology. The access button never removes the cover.
-- Theme selection is local to the current page session. Hover and focus move only a decorative censor edge; reduced-motion preferences disable transitions and smooth scrolling.
+## Hiring interaction
 
-The cover is a visual concept, not a security boundary. Keep placeholder content underneath it; do not place private information in frontend source.
+`components/HiringModal.js` uses a native modal dialog, labelled fields, required-field validation, keyboard focus wrapping, Escape, outside-click dismissal, and focus restoration. Closing clears the form. The form does not read or serialize field values, send a request, save data, or unlock the document. Its success state is explicitly marked as a demo.
 
-## Manual review
+The theme toggle changes only the current page session. CSS handles CTA motion and modal entrance effects; reduced-motion preferences disable them.
 
-On desktop, compare the three columns, thin dividers, numbered rows, and compact typography with the supplied reference. Scroll to confirm the black field cuts across actual continuing content.
+The blur is a presentation effect, not access control. Keep demo content in the frontend until you intentionally replace it.
 
-On a phone, check the About → Tech Stack → Projects order, text wrapping, sideways scrolling, and the hiring phrase in a vertical screen recording. Check the theme toggle and access button with touch and keyboard.
-
-`npm run check:content` inspects the production export after `npm run build`. It checks the phrase, all stack names, local anchors, mobile reading order, and placeholder content. It does not replace visual browser QA.
+See `QA.md` for the checks and verification limits.

@@ -1,6 +1,6 @@
 *, *::before, *::after { box-sizing: border-box; }
-:root { color-scheme: light; --paper: #fafaf9; --paper-rgb: 250 250 249; --ink: #191919; --muted: #666662; --line: #cfcfcd; --placeholder: #e5e5e3; --red: #db171e; }
-:root[data-theme="dark"] { color-scheme: dark; --paper: #1b1b1d; --paper-rgb: 27 27 29; --ink: #f5f5f2; --muted: #b6b6b1; --line: #464649; --placeholder: #343438; }
+:root { color-scheme: light; --paper: #fafaf9; --paper-rgb: 250 250 249; --ink: #191919; --muted: #666662; --line: #cfcfcd; --input-line: #888885; --placeholder: #e5e5e3; --red: #db171e; }
+:root[data-theme="dark"] { color-scheme: dark; --paper: #1b1b1d; --paper-rgb: 27 27 29; --ink: #f5f5f2; --muted: #b6b6b1; --line: #464649; --input-line: #737378; --placeholder: #343438; --red: #ff6870; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 13px/1.5 Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, p { margin: 0; }
 button, input, select, textarea { font: inherit; color: inherit; }
@@ -64,7 +64,7 @@ svg { display: block; flex-shrink: 0; }
 .lock-content::before { content: ""; position: absolute; z-index: -1; width: min(100vw - 32px, 650px); height: 290px; top: 40%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(ellipse, #ff48502c 0%, #fa363a12 42%, transparent 70%); pointer-events: none; }
 .lock-badge { display: grid; place-items: center; width: 88px; height: 88px; margin-bottom: 24px; border-radius: 25px; color: #e51520; border: 1.5px solid #ffffffeb; background: linear-gradient(145deg, #ffffffc9, #ffffff75); backdrop-filter: blur(12px); box-shadow: 0 9px 30px #ee26392e, inset 0 1px 0 #fff; }
 .lock-badge svg { width: 40px; height: 40px; }
-.hire-button { display: inline-flex; align-items: center; justify-content: center; gap: 24px; padding: 17px 30px; min-height: 64px; max-width: 100%; border: 1.5px solid #fff; border-radius: 999px; background: linear-gradient(180deg, #ff373f, #d80712); color: #fff; box-shadow: 0 10px 28px #e91e3852, 0 0 65px #fa454b40, inset 0 1px 0 #ffffff5c; font-size: clamp(16px, 1.5vw, 22px); font-weight: 600; line-height: 1.35; letter-spacing: -.025em; transition: transform .22s, box-shadow .22s; }
+.hire-button { display: inline-flex; align-items: center; justify-content: center; gap: 24px; padding: 17px 30px; min-height: 64px; max-width: 100%; border: 1.5px solid #fff; border-radius: 999px; background: linear-gradient(180deg, #e51c28, #d80712); color: #fff; box-shadow: 0 10px 28px #e91e3852, 0 0 65px #fa454b40, inset 0 1px 0 #ffffff5c; font-size: clamp(16px, 1.5vw, 22px); font-weight: 600; line-height: 1.35; letter-spacing: -.025em; transition: transform .22s, box-shadow .22s; }
 .hire-button > span { min-width: 0; }
 .hire-button svg { width: 25px; height: 25px; transition: transform .22s; }
 .hire-button:focus-visible { outline: 3px solid var(--red); outline-offset: 6px; }
@@ -72,7 +72,7 @@ svg { display: block; flex-shrink: 0; }
 .lock-caption { margin-top: 18px; font-size: 8px; letter-spacing: .12em; }
 :root[data-theme="dark"] .lock-badge { background: linear-gradient(145deg, #ffffff21, #ffffff0c); border-color: #ffffff4d; box-shadow: 0 9px 40px #e5253b2e, inset 0 1px 0 #ffffff38; }
 @media (hover: hover) and (pointer: fine) { .hire-button:hover { transform: scale(1.015); box-shadow: 0 12px 32px #e91e3866, 0 0 80px #fa454b5c, inset 0 1px 0 #ffffff5c; } .hire-button:hover svg { transform: translateX(4px); } .theme-toggle:hover { background: var(--placeholder); } }
-.hiring-dialog { width: min(560px, calc(100% - 32px)); max-height: calc(100svh - 32px); margin: auto; padding: 0; overflow-y: auto; overscroll-behavior: contain; background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 24px 100px #0000003b; text-align: left; }
+.hiring-dialog { width: min(560px, calc(100% - 32px)); max-height: calc(100svh - 32px); max-height: calc(100dvh - 32px); margin: auto; padding: 0; overflow-y: auto; overscroll-behavior: contain; background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 24px 100px #0000003b; text-align: left; }
 .hiring-dialog[open] { animation: modal-enter .2s ease-out; }
 .hiring-dialog::backdrop { background: #0b0b125c; backdrop-filter: blur(5px); animation: backdrop-enter .2s ease-out; }
 .modal-panel { position: relative; padding: 30px; }
@@ -86,12 +86,12 @@ svg { display: block; flex-shrink: 0; }
 .form-field label { font: 700 9px/1.5 "Courier New", monospace; letter-spacing: .025em; }
 .form-field label > span:not(.optional-label) { color: var(--red); }
 .optional-label { font-size: 8px; font-weight: 400; color: var(--muted); }
-.form-field input, .form-field select, .form-field textarea { width: 100%; min-width: 0; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: var(--ink); padding: 11px 12px; font-size: 13px; line-height: 1.5; min-height: 43px; }
+.form-field input, .form-field select, .form-field textarea { width: 100%; min-width: 0; border: 1px solid var(--input-line); border-radius: 7px; background: var(--paper); color: var(--ink); padding: 11px 12px; font-size: 13px; line-height: 1.5; min-height: 43px; }
 .form-field textarea { resize: vertical; min-height: 90px; }
 .form-field input::placeholder, .form-field textarea::placeholder { color: var(--muted); opacity: .85; }
 .form-field :is(input, select, textarea):focus { outline: 2px solid var(--red); outline-offset: 2px; }
 .field-wide { grid-column: 1 / -1; }
-.modal-submit { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 48px; border: 1px solid #ed2e37; border-radius: 8px; padding: 13px 18px; background: linear-gradient(180deg, #ef2933, #d90c18); color: #fff; font: 700 11px "Courier New", monospace; letter-spacing: .04em; transition: box-shadow .2s; }
+.modal-submit { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 48px; border: 1px solid #ed2e37; border-radius: 8px; padding: 13px 18px; background: linear-gradient(180deg, #e51c28, #d90c18); color: #fff; font: 700 11px "Courier New", monospace; letter-spacing: .04em; transition: box-shadow .2s; }
 .modal-submit > span { font-size: 20px; font-weight: 400; line-height: 1; }
 .demo-notice { color: var(--muted); font-size: 10px; line-height: 1.6; }
 .hiring-form .demo-notice { margin-top: -5px; }
@@ -151,4 +151,4 @@ svg { display: block; flex-shrink: 0; }
   .form-field input, .form-field select, .form-field textarea { font-size: 16px; padding-block: 9px; }
   .modal-description { font-size: 12px; padding-right: 8px; }
 }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after, .hiring-dialog::backdrop { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
