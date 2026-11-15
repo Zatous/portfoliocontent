@@ -39,3 +39,16 @@ test("the locked portfolio exposes a real hiring button without exposing hidden 
   assert.ok(html.includes("Hire me to unlock my full potential"));
   assert.ok(html.includes('class="lock-badge" aria-hidden="true"'));
 });
+
+test("the native hiring dialog contains a labelled demo-only form", () => {
+  assert.match(html, /<dialog id="hiring-dialog"[^>]*aria-labelledby="hiring-title"[^>]*aria-describedby="hiring-description"/);
+  assert.ok(html.includes('aria-haspopup="dialog"'));
+  assert.ok(html.includes('aria-controls="hiring-dialog"'));
+  for (const id of ["hiring-name", "hiring-email", "hiring-company", "hiring-type", "hiring-idea"]) {
+    assert.ok(html.includes(`for="${id}"`));
+    assert.ok(html.includes(`id="${id}"`));
+  }
+  assert.ok(html.includes('type="email"'));
+  assert.ok(html.includes("UI demo only. Your details are not sent or saved."));
+  assert.doesNotMatch(html, /<form[^>]*action=/);
+});
